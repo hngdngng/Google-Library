@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import Jumbotron from "../components/Jumbotron";
 import Card from "../components/Card";
 import Form from "../components/Form";
 import Book from "../components/Book";
-import Footer from "../components/Footer";
 import API from "../utils/API";
 import { Col, Row, Container } from "../components/Grid";
 import { List } from "../components/List";
+import "./style.css";
 
-class Home extends Component {
+class Main extends Component {
   state = {
     books: [],
-    q: "",
-    message: "Search For A Book To Begin!"
+    query: "",
+    message: ""
   };
 
   handleInputChange = event => {
@@ -23,7 +22,7 @@ class Home extends Component {
   };
 
   getBooks = () => {
-    API.getBooks(this.state.q)
+    API.getBooks(this.state.query)
       .then(res =>
         this.setState({
           books: res.data
@@ -32,7 +31,7 @@ class Home extends Component {
       .catch(() =>
         this.setState({
           books: [],
-          message: "No New Books Found, Try a Different Query"
+          message: "No Books Found, Try a Different Query"
         })
       );
   };
@@ -59,28 +58,25 @@ class Home extends Component {
   render() {
     return (
       <Container>
+          <img className="home-img " src={process.env.PUBLIC_URL + "/home.jpg"} alt=""/>
         <Row>
           <Col size="md-12">
-            <Jumbotron>
               <h1 className="text-center">
                 <strong>Google Library</strong>
               </h1>
-              <h2 className="text-center">Search for a book, Save it for later</h2>
-            </Jumbotron>
+              <h2 className="text-center">Find your book and save it too. It's that simple.</h2>
           </Col>
           <Col size="md-12">
-            <Card title="Book Search" icon="far fa-book">
               <Form
                 handleInputChange={this.handleInputChange}
                 handleFormSubmit={this.handleFormSubmit}
-                q={this.state.q}
+                query={this.state.query}
               />
-            </Card>
           </Col>
         </Row>
         <Row>
           <Col size="md-12">
-            <Card title="Results">
+            <Card title="Results" disp={this.state.books.length ? ("") : ("d-none")}>
               {this.state.books.length ? (
                 <List>
                   {this.state.books.map(book => (
@@ -95,24 +91,24 @@ class Home extends Component {
                       Button={() => (
                         <button
                           onClick={() => this.handleBookSave(book.id)}
-                          className="btn btn-primary ml-2"
+                          className="btn ml-2"
+                          id="save-btn"
                         >
-                          Save
+                          <i class="far fa-heart"></i>
                         </button>
                       )}
                     />
                   ))}
                 </List>
               ) : (
-                <h2 className="text-center">{this.state.message}</h2>
-              )}
+                  <h2 className="text-center">{this.state.message}</h2>
+                )}
             </Card>
           </Col>
         </Row>
-        <Footer />
       </Container>
     );
   }
 }
 
-export default Home;
+export default Main;

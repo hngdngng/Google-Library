@@ -1,7 +1,39 @@
-a {
-    color: black;
+#search-btn {
+    color: #fff;
+    margin-left: 20px;
+    border-radius: 50px;
+    padding: 6px 25px 7px 25px;
+    white-space: nowrap;
+    transition: 0.3s;
+    font-size: 14px;
+    display: inline-block;
+    background:  rgb(216, 81, 64);
+    font-weight: 600;
 }
-
-a:hover {
+  
+#search-btn:hover {
+    background: rgb(241, 190, 66);
+    color: #fff;
     text-decoration: none;
 }
+
+#Title {
+    border: none;
+    width: 84%;
+    display: inline-block;
+}
+
+@media (max-width: 1200px) {
+    #search-btn {
+        margin-top: 10px;
+        margin-left: 0;
+        padding: 6px 20px 7px 20px;
+    }
+    #Title {
+        border: none;
+        width: 100%;
+        display: inline-block;
+    }
+}
+
+  

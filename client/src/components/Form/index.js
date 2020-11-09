@@ -1,32 +1,31 @@
 import React from "react";
 import "./style.css";
 
-function Form({ q, handleInputChange, handleFormSubmit }) {
+function Form({ query, handleInputChange, handleFormSubmit }) {
   return (
     <form>
       <div className="form-group">
-        <label htmlFor="Query">
-          <strong>Book</strong>
-        </label>
         <input
           className="form-control"
           id="Title"
           type="text"
-          value={q}
-          placeholder="Ready Player One"
-          name="q"
+          value={query}
+          placeholder="Book Title, Keywords, Author"
+          name="query"
           onChange={handleInputChange}
           required
         />
-      </div>
-      <div className="pull-right">
         <button
           onClick={handleFormSubmit}
           type="submit"
-          className="btn btn-lg btn-danger float-right"
+          className="btn btn-lg"
+          id="search-btn"
         >
           Search
         </button>
+      </div>
+      <div>
+        
       </div>
     </form>
   );

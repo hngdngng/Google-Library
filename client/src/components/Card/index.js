@@ -1,8 +1,8 @@
 import React from "react";
 
-function Card({ icon, title, children }) {
+function Card({ icon, title, children, disp }) {
   return (
-    <div className="card mt-4">
+    <div className={`card mt-4 ${disp}`}>
       <div className="card-header">
         <h3>
           <strong>
