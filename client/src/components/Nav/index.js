@@ -32,7 +32,7 @@ class Nav extends Component {
 
   render() {
     return (
-      <nav className="navbar navbar-expand-lg">
+      <nav className="navbar navbar-expand-lg navbar-light">
         <Link className="navbar-brand nav-brand" to="/">
           Google Books
         </Link>
