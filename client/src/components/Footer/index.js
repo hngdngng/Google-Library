@@ -4,8 +4,8 @@ function Footer() {
   return (
     <footer>
       <hr />
-      <p className="pull-right">
-        <i className="fab fa-github" /> Proudly built using React.js
+      <p>
+        <a href="https://github.com/hngdngng/Google-Library"><i className="fab fa-github" /> Google Library Repository</a>
       </p>
     </footer>
   );
